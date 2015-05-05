@@ -1,7 +1,7 @@
 require "rubygems"
 require 'wunderground'
 require 'open-uri'
-require 'nokogiri'
+require 'json'
 
 def wunderground
 w = wunderground::Base.new
@@ -13,7 +13,7 @@ ask_location = puts "Find out what the weather is like today! Enter your zip cod
 zip = gets.chomp
 
 
-condition = w_api.forecast_and_conditions_for("#{zip}")
+weather = w_api.forecast_and_conditions_for("#{zip}")
 
-puts condition
-
+current_weather = weather[conditions]
+puts current_weather
